@@ -1,1 +1,2 @@
-export const index = {};
+export {default as Header} from './Header';
+export {default as MediaCarousel} from './MediaCarousel';

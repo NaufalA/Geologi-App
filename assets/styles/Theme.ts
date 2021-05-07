@@ -1,7 +1,6 @@
 import {DefaultTheme} from '@react-navigation/native';
 
 export const Theme = {
-  ...DefaultTheme,
   dark: false,
   colors: {
     ...DefaultTheme.colors,

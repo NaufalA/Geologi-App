@@ -2,10 +2,13 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {FasilitasScreen, HomeScreen, KurikulumScreen} from './screens';
+import {FasilitasScreen, HomeScreen} from './screens';
 import {Theme} from './assets/styles';
+import ProgramPendidikanScreen from './screens/ProgramPendidikanScreen';
+import Staff from './screens/Staff';
 
 const Drawer = createDrawerNavigator();
+
 const App = () => {
   return (
     <NavigationContainer theme={Theme}>
@@ -26,7 +29,11 @@ const App = () => {
           }}
         />
         <Drawer.Screen name="Fasilitas" component={FasilitasScreen} />
-        <Drawer.Screen name="Kurikulum" component={KurikulumScreen} />
+        <Drawer.Screen
+          name="Program Pendidikan"
+          component={ProgramPendidikanScreen}
+        />
+        <Drawer.Screen name="Pejabat dan Staff Prodi" component={Staff} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
