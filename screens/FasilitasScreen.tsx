@@ -1,10 +1,18 @@
+import {useTheme} from '@react-navigation/native';
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView, Image} from 'react-native';
+import {gedung} from '../utils/gedung';
 
 const FasilitasScreen = () => {
+  const {colors} = useTheme();
   return (
-    <View>
-      <Text>
+    <ScrollView style={{padding: 15}}>
+      <Text
+        style={{
+          padding: 10,
+          color: colors.text,
+          textAlign: 'center',
+        }}>
         Sejak tahun 2016 Fakultas Teknik Geologi (FTG) Unpad resmi menempati 3
         (tiga) gedung baru yang dibangun dari dana Islamic Development Bank
         (IDB). Ketiga gedung tersebut terletak di bagian utara Kampus Unpad
@@ -13,30 +21,37 @@ const FasilitasScreen = () => {
         Pertanian, Fakultas Perikanan dan Kelautan, dan Fakultas Farmasi.
       </Text>
       <View>
-        <Text>Gedung Dekanat</Text>
-        <Text>
-          Terdiri atas ruang pengelola fakultas, ruang rapat, dan ruang
-          sidang/kolokium. Setiap Dosen telah memiliki ruangan sendiri yang
-          berdampingan dengan laboratorium masing-masing (49 ruangan Dosen di 2
-          Gedung Akademik).
-        </Text>
+        {gedung.map(gedung => (
+          <View style={{flex: 1}}>
+            <Text
+              style={{fontSize: 20, fontWeight: 'bold', color: colors.primary}}>
+              {gedung.nama}
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Image
+                style={{flex: 1, width: '40%', height: 100}}
+                resizeMode="contain"
+                source={gedung.imgUrl}
+              />
+              <Text
+                style={{flex: 1, padding: 5, margin: 5, color: colors.text}}>
+                {gedung.desc}
+              </Text>
+            </View>
+          </View>
+        ))}
       </View>
-      <View>
-        <Text>Gedung Akademik I</Text>
-        <Text>
-          Terdiri atas ruang auditorium, ruang kuliah, dan laboratorium di
-          Gedung Akademik I; serta perpustakaan, laboratorium komputer, ruang
-          kuliah, dan laboratorium
-        </Text>
-      </View>
-      <View>
-        <Text>Gedung Akademik II</Text>
-        <Text>
-          Terdiri atas ruang perpustakaan, laboratorium komputer, ruang kuliah,
-          dan laboratorium
-        </Text>
-      </View>
-      <Text>
+      <Text
+        style={{
+          padding: 10,
+          fontSize: 12,
+          color: colors.text,
+          textAlign: 'center',
+        }}>
         Keseluruhan prasarana tersebut sebagian besar sudah dilengkapi dengan
         sarana berupa AC, LCD Projector, meubel/furniture, komputer, sound
         system, alat-alat laboratorium, dan lain sebagainya. Sarana-sarana
@@ -50,7 +65,7 @@ const FasilitasScreen = () => {
         dan pengabdian masyarakat oleh Pusat-pusat Studi di Fakultas Teknik
         Geologi.
       </Text>
-    </View>
+    </ScrollView>
   );
 };
 
